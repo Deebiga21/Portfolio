@@ -16,29 +16,56 @@ export default function Journey() {
   const [d, setD] = useState('')
   const [box, setBox] = useState({ w: 0, h: 0 })
 
-  // build the curve through every dot
+  // build the road. Desktop: it passes through each portrait's and card's inner
+  // corners (zig-zagging across the gap), with the dot in the middle.
+  // Mobile: a gentle wave through the dots on the left.
   useEffect(() => {
     const build = () => {
       const L = list.current
       if (!L) return
-      const r = L.getBoundingClientRect()
-      const pts = [...L.querySelectorAll('.jr-dot')].map((el) => {
-        const b = el.getBoundingClientRect()
-        return [b.left - r.left + b.width / 2, b.top - r.top + b.height / 2]
-      })
-      if (!pts.length) return
+      const W = L.offsetWidth, H = L.offsetHeight
+      const items = [...L.querySelectorAll('.jr-item')]
       const mobile = innerWidth < 760
-      const amp = mobile ? 22 : Math.min(120, r.width * 0.1)
-      const start = [pts[0][0], 0]
-      let path = `M ${start[0]} ${start[1]} `
-      let prev = start
-      pts.concat([[pts[pts.length - 1][0], r.height]]).forEach((p, i) => {
-        const dir = i % 2 ? 1 : -1
-        const dy = (p[1] - prev[1]) / 2
-        path += `C ${prev[0] + amp * dir} ${prev[1] + dy}, ${p[0] + amp * dir} ${p[1] - dy}, ${p[0]} ${p[1]} `
-        prev = p
-      })
-      setBox({ w: r.width, h: r.height })
+      let pts = []
+      if (mobile) {
+        items.forEach((it) => {
+          const dot = it.querySelector('.jr-dot')
+          dot.style.left = ''; dot.style.top = ''
+          pts.push([it.offsetLeft + dot.offsetLeft + dot.offsetWidth / 2, it.offsetTop + dot.offsetTop + dot.offsetHeight / 2])
+        })
+      } else {
+        // corner of an element (layout box, rotated by its CSS --r)
+        const corner = (el, item, sx, sy, inset) => {
+          const w = el.offsetWidth, h = el.offsetHeight
+          const cx = item.offsetLeft + el.offsetLeft + w / 2
+          const cy = item.offsetTop + el.offsetTop + h / 2
+          const r = (parseFloat(getComputedStyle(el).getPropertyValue('--r')) || 0) * Math.PI / 180
+          const dx = sx * (w / 2 - inset), dy = sy * (h / 2 - inset)
+          return [cx + dx * Math.cos(r) - dy * Math.sin(r), cy + dx * Math.sin(r) + dy * Math.cos(r)]
+        }
+        items.forEach((it) => {
+          const flip = it.classList.contains('flip')
+          const left = it.querySelector(flip ? '.jr-card' : '.polaroid')
+          const right = it.querySelector(flip ? '.polaroid' : '.jr-card')
+          const a = corner(left, it, 1, -1, left.classList.contains('jr-card') ? 7 : 0)   // inner top corner of the left piece
+          const b = corner(right, it, -1, 1, right.classList.contains('jr-card') ? 7 : 0) // inner bottom corner of the right piece
+          const m = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2]
+          pts.push(a, m, b)
+          const dot = it.querySelector('.jr-dot')
+          dot.style.left = `${m[0] - it.offsetLeft}px`
+          dot.style.top = `${m[1] - it.offsetTop}px`
+        })
+      }
+      if (!pts.length) return
+      pts = [[pts[0][0], 0], ...pts, [pts[pts.length - 1][0], H]]
+      // Catmull-Rom → smooth cubic Béziers through every point
+      let path = `M ${pts[0][0]} ${pts[0][1]} `
+      for (let i = 0; i < pts.length - 1; i++) {
+        const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2
+        const t = 0.5 / 3
+        path += `C ${p1[0] + (p2[0] - p0[0]) * t} ${p1[1] + (p2[1] - p0[1]) * t}, ${p2[0] - (p3[0] - p1[0]) * t} ${p2[1] - (p3[1] - p1[1]) * t}, ${p2[0]} ${p2[1]} `
+      }
+      setBox({ w: W, h: H })
       setD(path)
     }
     build()
