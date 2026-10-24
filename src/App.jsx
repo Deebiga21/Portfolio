@@ -25,7 +25,7 @@ export default function App() {
     Promise.all([
       document.fonts?.ready,
       load(BASE + profile.avatar),
-      load(`${BASE}img/stickers/${dir}/f${String(lookFrames.from).padStart(3, '0')}.webp`),
+      load(BASE + (profile.heroImage || `img/stickers/${dir}/f${String(lookFrames.from).padStart(3, '0')}.webp`)),
     ]).then(() => setTimeout(() => setLoaded(true), Math.max(0, 1500 - (performance.now() - t0))))
   }, [])
 

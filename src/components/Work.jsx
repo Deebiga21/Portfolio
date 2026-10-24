@@ -19,11 +19,12 @@ function ProjectCard({ p, i }) {
         <div className="wk-art">{p.image ? <img src={p.image} alt={p.title} /> : <Art kind={p.visual} />}</div>
       </div>
       <div className="wk-body">
-        <div className="wk-top"><span className="wk-no">0{i + 1}</span><span className="wk-tag">{p.tag}</span></div>
+        <div className="wk-top"><span className="wk-no">{String(i + 1).padStart(2, '0')}</span><span className="wk-tag">{p.tag}</span>{p.status && <span className="project-status">{p.status}</span>}</div>
         <h3>{p.title}</h3>
         <p>{p.text}</p>
         <div className="chips">{p.tech.map((t) => <span key={t}>{t}</span>)}</div>
-        <a className="wk-link" href={p.link} target="_blank" rel="noreferrer">View project <span>↗</span></a>
+        {p.link ? <a className="wk-link" href={p.link} target="_blank" rel="noreferrer">See GitHub profile <span>↗</span></a> : <span className="wk-link wk-link-muted">Repository link coming soon</span>}
+        {p.demo && <a className="wk-link" href={p.demo} target="_blank" rel="noreferrer">Live demo <span>↗</span></a>}
       </div>
     </article>
   )
@@ -67,3 +68,4 @@ export default function Work() {
     </section>
   )
 }
+

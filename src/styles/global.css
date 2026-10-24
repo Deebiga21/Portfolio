@@ -297,6 +297,29 @@ ol, ul { list-style: none; }
 .ct-mail button { height: 34px; padding: 0 14px; border-radius: 99px; border: 1.5px solid rgba(255, 255, 255, 0.7); font-size: 13px; font-weight: 600; transition: background 0.3s, color 0.3s; }
 .ct-mail button:hover { background: var(--white); color: var(--coral-d); }
 .ct-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.ct-phone { display: flex; align-items: center; gap: 12px; margin-top: 18px; }
+.ct-phone span { font-size: 10px; font-weight: 800; letter-spacing: .12em; opacity: .82; }
+.ct-phone a { font-family: var(--display); font-size: 22px; font-weight: 800; border-bottom: 2px solid rgba(255,255,255,.7); }
+.ct-form-panel { max-width: 900px; margin: 36px auto 0; padding: clamp(24px, 4vw, 48px); border: 1px solid var(--line); border-radius: 28px; background: var(--white); box-shadow: var(--shadow); }
+.ct-form-intro { margin-bottom: 24px; }
+.ct-form-intro h3 { font-family: var(--display); font-size: clamp(28px, 3vw, 40px); line-height: 1.05; letter-spacing: -.04em; margin-top: 16px; }
+.ct-form-intro p { color: var(--muted); margin-top: 8px; }
+.ct-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.ct-form label { display: grid; gap: 7px; font-size: 13px; font-weight: 700; }
+.ct-form label>span { font-size: 11px; color: var(--muted); font-weight: 500; }
+.ct-form input,.ct-form textarea { width: 100%; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--ink); padding: 12px 14px; outline: none; font: 500 14px var(--body); transition: border-color .2s, box-shadow .2s; }
+.ct-form input:focus,.ct-form textarea:focus { border-color: var(--coral-d); box-shadow: 0 0 0 3px rgba(242,102,74,.14); }
+.ct-form textarea { resize: vertical; min-height: 128px; }
+.ct-form-wide,.ct-form-submit,.ct-form-status { grid-column: 1 / -1; }
+.ct-form-submit { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; }
+.ct-form-submit .btn { border-radius: 14px; }
+.ct-form-note,.ct-form-status { color: var(--muted); font-size: 12px; margin: 0; }
+.ct-form-status:empty { display: none; }
+.ct-honeypot { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; opacity: 0 !important; }
+.ct-form-submit button:disabled { opacity: .65; cursor: wait; }
+.project-status { margin-left: auto; font-size: 10px; font-weight: 700; color: #596D26; background: #F1F2D8; padding: 5px 8px; border-radius: 99px; }
+.wk-link-muted { color: var(--muted); border-bottom-style: dashed; cursor: default; }
+.wk-link-muted:hover { gap: 6px; }
 .ct-media { position: relative; min-height: 300px; }
 .ct-sticker { position: absolute; right: -4%; bottom: calc(-1 * clamp(32px, 5vw, 72px)); height: 138%; width: auto; max-width: none; filter: drop-shadow(0 20px 30px rgba(48, 34, 31, 0.25)); transform-origin: 50% 100%; }
 .ct-bubble { position: absolute; z-index: 2; left: -6%; top: -16%; font-size: 30px; padding: 6px 18px; border-radius: 20px; background: var(--white); color: var(--ink); box-shadow: var(--shadow); transform: rotate(-6deg); }
@@ -323,7 +346,7 @@ ol, ul { list-style: none; }
   .nav-sheet a { font-family: var(--display); font-weight: 800; font-size: 28px; letter-spacing: -0.03em; padding: 8px 10px; border-top: 1px solid var(--line); }
   .hero { padding-top: 96px; }
   .hr-grid { grid-template-columns: 1fr; min-height: 0; gap: 10px; }
-  .hr-name { font-size: 24vw; margin: 10px 0 18px; }
+  .hr-name { font-size: clamp(46px, 16vw, 96px); margin: 10px 0 18px; }
   .hr-visual { height: 60vh; margin-top: 18px; }
   .hr-note { display: none; }
   .hr-counts { gap: 20px; }
@@ -342,6 +365,10 @@ ol, ul { list-style: none; }
   .ct-sticker { right: 50%; translate: 50% 0; height: 110%; }
   .ct-bubble { left: 4%; top: 2%; }
   .foot { justify-content: center; text-align: center; }
+  .ct-form { grid-template-columns: 1fr; }
+  .ct-form label,.ct-form-wide,.ct-form-submit,.ct-form-status { grid-column: 1; }
+  .ct-form-submit { align-items: flex-start; flex-direction: column; }
+  .ct-phone { flex-wrap: wrap; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition-duration: 0.001ms !important; }

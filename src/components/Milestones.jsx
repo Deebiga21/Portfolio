@@ -24,6 +24,8 @@ export default function Milestones() {
       .from('.num-meta, .num-note', { y: 12, opacity: 0, stagger: 0.08, duration: 0.6 }, 0.9)
   }, { scope: root })
 
+  if (!certifications.length && !scoreboard.length) return null
+
   return (
     <section className="milestones section" id="milestones" ref={root}>
       <Wave flip />
@@ -62,3 +64,5 @@ export default function Milestones() {
     </section>
   )
 }
+
+

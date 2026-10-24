@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import { gsap, useGSAP } from '../lib/motion'
-import { about } from '../data'
+import { about, profile } from '../data'
 import { Squiggle } from './Bits'
 import Wave from './Wave'
 
@@ -8,6 +8,7 @@ import Wave from './Wave'
 function PhotoStack() {
   const [order, setOrder] = useState(about.photos.map((_, i) => i))
   const stack = useRef(null)
+  const canShuffle = about.photos.length > 1
   const next = () => {
     const top = stack.current.querySelector(`[data-i="${order[0]}"]`)
     gsap.timeline()
@@ -16,17 +17,17 @@ function PhotoStack() {
       .to(top, { x: 0, y: 0, rotate: 0, duration: 0.5, ease: 'back.out(1.6)' })
   }
   return (
-    <div className="stack" ref={stack} onClick={next} role="button" tabIndex={0} onKeyDown={(e) => e.key === 'Enter' && next()} aria-label="Shuffle photos">
+    <div className="stack" ref={stack} onClick={canShuffle ? next : undefined} role={canShuffle ? 'button' : undefined} tabIndex={canShuffle ? 0 : undefined} onKeyDown={(e) => canShuffle && e.key === 'Enter' && next()} aria-label={canShuffle ? 'Shuffle photos' : undefined}>
       {about.photos.map((src, i) => {
         const pos = order.indexOf(i)
         return (
-          <figure key={src} data-i={i} className={`stack-card ${pos === 0 ? "is-top" : ""}`} style={{ zIndex: 10 - pos, '--pos': pos }}>
-            <img src={src} alt={`Lohitha, ${about.roles[i]}`} loading="lazy" />
+          <figure key={`${src}-${i}`} data-i={i} className={`stack-card ${pos === 0 ? "is-top" : ""}`} style={{ zIndex: 10 - pos, '--pos': pos }}>
+            <img src={src} alt={`${profile.full}, ${about.roles[i]}`} loading="lazy" />
             <figcaption><span className="role-kicker hand">I’m a</span><span className="role-name">{about.roles[i]}</span></figcaption>
           </figure>
         )
       })}
-      <span className="stack-hint hand">click to see my other roles ↻</span>
+      {canShuffle && <span className="stack-hint hand">click to see my other roles ↻</span>}
     </div>
   )
 }
@@ -58,3 +59,4 @@ export default function About() {
     </section>
   )
 }
+

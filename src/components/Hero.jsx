@@ -30,7 +30,7 @@ export default function Hero({ ready }) {
         <div className="hr-copy">
           <p className="hr-hello hand">Hi there, I’m <span aria-hidden="true">👋</span></p>
           <h1 className="hr-name">
-            <span className="hr-name-text">{profile.name.split('').map((c, i) => <span className="ch-mask" key={i}><span className="ch">{c}</span></span>)}</span>
+            <span className="hr-name-text">{profile.name.split('').map((c, i) => <span className="ch-mask" key={i}><span className="ch">{c === ' ' ? '\u00a0' : c}</span></span>)}</span>
             <Squiggle />
           </h1>
           <p className="hr-sub">
@@ -49,7 +49,7 @@ export default function Hero({ ready }) {
 
         <div className="hr-visual">
           <div className="hr-blob" />
-          <LookAt from={lookFrames.from} to={lookFrames.to} className="hr-person" label={profile.full} />
+          <LookAt from={lookFrames.from} to={lookFrames.to} src={profile.heroImage} className="hr-person" label={profile.full} />
           <div className="hr-note hand">
             move your cursor,<br />I’ll look at it!
             <Arrow />

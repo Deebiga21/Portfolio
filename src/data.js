@@ -1,111 +1,105 @@
-/* ════════════════════════════════════════════════════════════
-   Everything you see on the site lives here. Edit freely.
-   Colours & fonts: top of src/styles/global.css
-   Photos: public/img (faces = round avatars, photos = polaroids & photo stack,
-   stickers = cut-out frames with a white sticker border)
-   ════════════════════════════════════════════════════════════ */
-
+/* Portfolio content. Replace details here as the story grows. */
 export const profile = {
-  name: 'Lohitha',
-  full: 'Damisetti Shamya Lohitha',
-  role: 'Full-stack developer',
-  location: 'Andhra Pradesh, India',
-  email: 'damisettilohitha@gmail.com',
-  intro: 'I build friendly, AI-powered web apps with React, Node.js and Python, from the first pixel to the last API call.',
-  github: 'https://github.com/lohithadamisetti123',
-  linkedin: 'https://www.linkedin.com/search/results/all/?keywords=lohitha%20damisetti', // TODO: your exact profile URL
-  resume: '', // optional: 'resume.pdf' in /public, WITHOUT your phone number
-  avatar: 'img/faces/smile.jpg',
+  name: 'Deebiga',
+  full: 'Deebiga',
+  role: 'AI & Data Science Student',
+  location: 'Chennai, India',
+  email: 'deebigasubramaniyan@gmail.com',
+  phone: '8778579270',
+  phoneLink: 'tel:+918778579270',
+  intro: 'I build intelligent, user-friendly applications that bring together AI, modern web technologies, and thoughtful design.',
+  github: 'https://github.com/Deebiga21',
+  linkedin: 'https://www.linkedin.com/in/deebigas/',
+  resume: '',
+  avatar: 'img/photos/deebiga-portrait.png',
+  heroImage: 'img/photos/deebiga-hero-cutout.png',
 }
 
-// quick stats under your intro
 export const heroCounts = [
-  { value: '3', label: 'AI products' },
-  { value: '1,230+', label: 'problems solved' },
-  { value: '9.07', label: 'CGPA' },
+  { value: '8.6', label: 'CGPA' },
+  { value: '5', label: 'featured projects' },
+  { value: 'AI + UX', label: 'focus areas' },
 ]
 
 export const about = {
-  // a fanned stack of photos: click it to shuffle through your roles
-  photos: ['img/photos/portrait-tilt.jpg', 'img/photos/portrait-profile.jpg', 'img/photos/portrait-seated.jpg', 'img/photos/portrait-smile.jpg'],
-  // one role per photo, shown under it (click the stack to cycle)
-  roles: ['Full-Stack Developer', 'Data Scientist', 'Tech Influencer', 'UI/UX Designer'],
+  photos: Array(6).fill('img/photos/deebiga-portrait.png'),
+  roles: ['AI & Full-Stack Developer', 'UI/UX Designer', 'Data Analyst', 'Web Developer', 'Model Trainer', 'Good Communicator'],
   paragraphs: [
-    "Hi! I'm Lohitha, a full-stack developer and B.Tech Data Science student at Aditya College of Engineering & Technology.",
-    'I love building products end to end: React interfaces that feel good, Node and FastAPI backends that scale, and AI features that actually help people.',
+    "I'm an aspiring AI and Full-Stack Developer at Chennai Institute of Technology. I enjoy exploring how technology can solve real-world problems, from machine learning and generative AI to frontend development and UI/UX design.",
+    'I like taking ideas from concept to implementation: designing intuitive experiences, building interactive interfaces, and integrating intelligent features. Through projects in healthcare, institutional knowledge management, and digital marketplaces, I keep learning by building and collaborating.',
   ],
   stats: [
-    { value: '9.07', label: 'CGPA · Department Topper' },
-    { value: '1,230+', label: 'DSA problems solved' },
-    { value: '3', label: 'AI products shipped' },
-    { value: '8', label: 'Certifications' },
+    { value: '8.6', label: 'CGPA · Chennai Institute of Technology' },
+    { value: '5', label: 'Featured projects' },
+    { value: 'AI + UX', label: 'Areas of interest' },
+    { value: 'B.Tech', label: 'Artificial Intelligence & Data Science' },
   ],
 }
 
-/* visual: 'gauge' | 'heatmap' | 'outfit' (illustrated art), or add image: 'img/...' */
 export const projects = [
   {
-    title: 'PolicyGuard AI',
-    tag: 'AI · Legal tech',
+    title: 'ClinicFlow Intelligence Core',
+    tag: 'AI · Healthcare',
     visual: 'gauge',
-    text: 'Reads privacy policies and contracts across web, desktop and mobile, flags risky clauses and gives every document a risk score.',
-    tech: ['React', 'React Native', 'Electron', 'Node.js', 'OpenAI'],
-    link: 'https://github.com/lohithadamisetti123', // TODO: exact repo
+    text: 'An AI-powered healthcare management platform designed to improve clinic queue management, predict waiting times, and enhance the patient journey with intelligent dashboards and real-time updates.',
+    tech: ['React', 'Tailwind CSS', 'FastAPI', 'Python', 'SQLAlchemy', 'SQLite', 'XGBoost'],
+    link: 'https://github.com/Deebiga21',
     color: '#FFE5D9',
   },
   {
-    title: 'Release Risk Heatmap',
-    tag: 'Machine learning',
+    title: 'Memora',
+    tag: 'AI · Knowledge management',
     visual: 'heatmap',
-    text: 'A Random Forest model that predicts risky software releases, shown on a live heatmap across teams and modules.',
-    tech: ['React', 'TypeScript', 'FastAPI', 'scikit-learn', 'PostgreSQL'],
-    link: 'https://github.com/lohithadamisetti123',
+    text: 'An AI-powered institutional memory platform that turns documents into searchable knowledge, connects important decisions and events, and helps people find information through conversational AI.',
+    tech: ['Document processing', 'AI workflows', 'Conversational AI'],
+    link: 'https://github.com/Deebiga21',
     color: '#FFD9CC',
   },
   {
-    title: 'StarCloset',
-    tag: 'GenAI · Myntra HackerRamp',
+    title: 'Kala-X',
+    tag: 'Digital marketplace',
     visual: 'outfit',
-    text: 'An AI stylist that builds head-to-toe outfits from your vibe, occasion and budget, with chatty stylist personas.',
-    tech: ['React', 'Go', 'Redis', 'PostgreSQL', 'LLMs'],
-    link: 'https://github.com/lohithadamisetti123',
+    text: 'A marketplace concept connecting artisans with customers and helping handcrafted products reach more people through an accessible discovery experience.',
+    tech: ['Marketplace', 'Product discovery', 'Accessible design'],
+    link: 'https://github.com/Deebiga21',
     color: '#FFEDE5',
+  },
+  {
+    title: 'Suspicious Transaction Detection',
+    tag: 'AI · Financial safety',
+    visual: 'heatmap',
+    text: 'An experimental fraud detection project exploring graph neural networks and generative AI techniques to identify potentially suspicious financial transactions using the PaySim dataset.',
+    tech: ['Python', 'PaySim', 'Machine learning', 'GANs', 'GNNs'],
+    link: 'https://github.com/Deebiga21',
+    color: '#FBE8D4',
+  },
+  {
+    title: 'Oil Spill Detection and Monitoring System',
+    tag: 'AI · Environmental monitoring',
+    visual: 'gauge',
+    status: 'Research & development · Prototype',
+    text: 'An AI-powered environmental monitoring prototype exploring image analysis to identify potential oil spills in marine environments, support faster response, and help protect marine ecosystems.',
+    tech: ['Python', 'Machine learning', 'Computer vision', 'Image processing'],
+    link: 'https://github.com/Deebiga21',
+    demo: '',
+    color: '#E5F1ED',
   },
 ]
 
 export const journey = [
-  { year: '2026', title: 'Full-Stack Intern', org: 'Technical Hub Pvt Ltd', text: 'May – June. Built web and mobile apps with React Native.', photo: 'img/photos/portrait-laptop.jpg', note: 'first internship!' },
-  { year: '2026', title: 'Top 100 Team', org: 'Myntra WeForShe HackerRamp', text: 'Built StarCloset, an AI stylist, with my team.', photo: 'img/photos/portrait-smile.jpg', note: 'so proud of this one' },
-  { year: '2023', title: 'B.Tech, Data Science', org: 'Aditya College of Engineering & Technology', text: '2023 – 2027 · CGPA 9.07 · Department Topper.', photo: 'img/photos/portrait-look.jpg', note: 'where it all started' },
-  { year: '2021', title: 'Intermediate (MPC)', org: 'Sri Chaitanya Junior College, Kakinada', text: 'Scored 90.6% in Maths, Physics & Chemistry.', photo: 'img/photos/portrait-seated.jpg', note: 'maths kid' },
+  { year: 'Current', title: 'B.Tech, Artificial Intelligence & Data Science', org: 'Chennai Institute of Technology · Chennai, India', text: 'Pursuing a B.Tech degree with a CGPA of 8.6, while building practical projects across AI, healthcare, and full-stack development.', photo: 'img/photos/deebiga-portrait.png', note: 'learning by building' },
 ]
 
 export const skills = [
-  'React', 'Node.js', 'TypeScript', 'JavaScript', 'Python', 'Java', 'C++', 'SQL',
-  'Express', 'FastAPI', 'Spring Boot', 'React Native', 'Tailwind', 'MongoDB', 'PostgreSQL',
-  'MySQL', 'Redis', 'Docker', 'Git', 'Postman', 'Electron', 'JWT', 'OpenAI', 'scikit-learn',
+  'Python', 'JavaScript', 'Java', 'C++', 'React', 'Next.js', 'HTML', 'CSS', 'Tailwind CSS',
+  'FastAPI', 'REST APIs', 'SQLAlchemy', 'Machine Learning', 'XGBoost', 'scikit-learn',
+  'Pandas', 'NumPy', 'SHAP', 'Computer Vision', 'Generative AI', 'LLM Workflows',
+  'SQLite', 'PostgreSQL', 'UI/UX Design', 'Wireframing', 'Prototyping', 'Git', 'GitHub', 'VS Code',
 ]
 
-// Milestones scoreboard. brand = icon key from src/lib/brands.js
-// value counts up, bar fills to value / goal
-export const scoreboard = [
-  { brand: 'leetcode', label: 'LeetCode', note: 'problems solved', value: 450, suffix: '+', goal: 500 },
-  { brand: 'codechef', label: 'CodeChef', note: 'problems solved', value: 500, suffix: '+', goal: 550 },
-  { brand: 'geeksforgeeks', label: 'GeeksforGeeks', note: 'problems solved', value: 280, suffix: '+', goal: 400 },
-  { brand: 'hackerrank', label: 'HackerRank', note: 'stars earned', value: 20, suffix: '★', goal: 25 },
-]
-// [title, issuer, brand icon key from src/lib/brands.js]
-export const certifications = [
-  ['MongoDB Certified Associate Developer', 'MongoDB', 'mongodb'],
-  ['GitHub Foundations', 'Microsoft · GitHub', 'github'],
-  ['Java Foundations Associate', 'Oracle', 'oracle'],
-  ['Career Launchpad · Data Analytics', 'Google Cloud', 'googlecloud'],
-  ['JavaScript Essentials 1 & 2', 'Cisco', 'cisco'],
-  ['Python & Intro to Data Science', 'Cisco', 'cisco'],
-  ['HTML & CSS', 'Certiport · Pearson', 'pearson'],
-  ['Programming Essentials in C/C++', 'C++ Institute', 'cplusplus'],
-]
+// Add verified achievements and credentials here when available.
+export const scoreboard = []
+export const certifications = []
 
-// cut-out frames used by the hero (she turns to look at your cursor)
 export const lookFrames = { from: 0, to: 28 }
-export const contactSticker = 'img/stickers/lg/f239.webp'
+export const contactSticker = 'img/photos/deebiga-portrait.png'

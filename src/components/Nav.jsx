@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { gsap, goTo } from '../lib/motion'
-import { profile } from '../data'
+import { profile, certifications, scoreboard } from '../data'
 
-const links = [['About', '#about'], ['Work', '#work'], ['Journey', '#journey'], ['Toolbox', '#skills'], ['Milestones', '#milestones']]
+const links = [['About', '#about'], ['Work', '#work'], ['Journey', '#journey'], ['Toolbox', '#skills'], ...(certifications.length || scoreboard.length ? [['Milestones', '#milestones']] : [])]
 
 export default function Nav({ ready }) {
   const ref = useRef(null)
@@ -26,3 +26,4 @@ export default function Nav({ ready }) {
     </header>
   )
 }
+
